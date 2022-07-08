@@ -39,6 +39,8 @@ header nav {
       -ms-flex-align: center;
           align-items: center;
   padding: 0 70px;
+  transition-delay: 0.1s;
+  transition: 0.6s;
 }
 
 .menu_link {
@@ -77,25 +79,13 @@ header nav {
 }
 
 .hamburger span {
-  display: block;
+  display: flex;
+  justify-content: flex-start;
   width: 20px;
   height: 2px;
   background-color: #fff;
   margin-top: 3px;
-}
-
-.span_activ span:nth-child(1) {
-  -webkit-transform: translateY(2px) rotate(-45deg);
-          transform: translateY(2px) rotate(-45deg);
-}
-
-.span_activ span:nth-child(2) {
-  display: none;
-}
-
-.span_activ span:nth-child(3) {
-  -webkit-transform: translateY(-3px) rotate(45deg);
-          transform: translateY(-3px) rotate(45deg);
+  transition: 0.4s;
 }
 
 .subheader {
@@ -791,6 +781,7 @@ footer .market-item {
     height: 40px;
   }
   .menu {
+    display: none;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -925,4 +916,48 @@ footer .market-item {
     display: block;
   }
 }
+
+/* =========== input for hamburger + checked ============= */
+.hm-checkbox {
+  display: none;
+  visibility: hidden;
+  position: absolute;
+  top: 12px;
+  right: 24px;
+}
+@media (max-width: 575px) {
+  .hm-checkbox {
+    display: block;
+  }
+}
+
+.hm-checkbox:checked ~ .menu {
+  display: flex;
+  animation: hm-opener 0.6s ease-out both;
+  
+}
+.hm-checkbox:checked ~ .span_activ span:nth-child(1) {
+  -webkit-transform: translateY(5px) rotate(-45deg);
+          transform: translateY(5px) rotate(-45deg);
+}
+.hm-checkbox:checked ~ .span_activ span:nth-child(2) {
+  -webkit-transform: translateY(0) rotate(45deg);
+          transform: translateY(0) rotate(45deg);
+}
+.hm-checkbox:checked ~ .span_activ span:nth-child(3) {
+  -webkit-transform: translate(1px, -4px) rotate(45deg);
+          transform: translate(1px, -4px) rotate(45deg);
+}
+
+@keyframes hm-opener {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  } 
+}
+
 /*# sourceMappingURL=stl.min.css.map */
